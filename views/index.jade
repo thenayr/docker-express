@@ -1,9 +1,20 @@
 extends layout
 
-block inline-script
-  script.
-    console.log('hi from views/index.jade')
-
-block content
-  h1 Docker viz
-
+doctype html
+html
+  head
+    script(type='text/javascript', src='deepstream.js')
+  |     
+  body
+    input(type='text')
+    |         
+    script(type='text/javascript').
+      ds = deepstream( 'http://thephedds.com:6020' ).login();
+      record = ds.record.getRecord( 'ds-example' );
+      input = document.querySelector( 'input' );
+      input.onkeyup = function(){
+      record.set( 'firstname', input.value );
+      };
+      record.subscribe( 'firstname', function( value ){
+      input.value = value;
+      });
