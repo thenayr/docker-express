@@ -5,8 +5,7 @@ var DeepstreamClient = require( 'deepstream.io-client-js' );
 var bodyParser = require('body-parser');
 client = DeepstreamClient( '172.17.42.1:6021' )
 
-express.use(bodyParser.json()); // for parsing application/json
-express.use(bodyParser.urlencoded({ extended: true }));
+
 
 client.login({ username: 'ds-example' }, function( success ){
   if( success ) {
