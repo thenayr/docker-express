@@ -1,0 +1,11 @@
+extends layout
+
+block inline-script
+  script.
+    socket.on('connect', function() {
+      console.log("inline client connected");
+    });
+
+block content
+  h1 Docker viz
+
