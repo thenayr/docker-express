@@ -2,7 +2,11 @@ var express = require('express');
 var router = express.Router();
 var server = require('http').Server(express);
 var DeepstreamClient = require( 'deepstream.io-client-js' );
+var bodyParser = require('body-parser');
 client = DeepstreamClient( '172.17.42.1:6021' )
+
+express.use(bodyParser.json()); // for parsing application/json
+express.use(bodyParser.urlencoded({ extended: true }));
 
 client.login({ username: 'ds-example' }, function( success ){
   if( success ) {
@@ -22,8 +26,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/docker-start', function(req, res) {
   res.send('success');
-  client.event.emit( 'docker', req);
-  console.log('something happened in docker');
+  console.log(req.body);
+  client.event.emit( 'docker', req.body);
 })
 
 
