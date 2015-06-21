@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/docker-start', function(req, res) {
   res.send('success');
-  client.event.emit( 'docker', req.body)
+  client.event.emit( 'docker', req);
   console.log('something happened in docker');
 })
 
