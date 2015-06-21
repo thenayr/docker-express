@@ -4,11 +4,6 @@ block content
   input(type='text')
   script(type='text/javascript').
     ds = deepstream( 'http://thephedds.com:6020' ).login();
-    record = ds.record.getRecord( 'ds-example' );
-    input = document.querySelector( 'input' );
-    input.onkeyup = function(){
-    record.set( 'firstname', input.value );
-    };
-    record.subscribe( 'firstname', function( value ){
-    input.value = value;
+    client.event.subscribe( 'docker', function( news ){
+      console.log(news);
     });
