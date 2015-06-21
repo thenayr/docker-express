@@ -2,9 +2,7 @@ extends layout
 
 block inline-script
   script.
-    socket.on('connect', function() {
-      console.log("inline client connected");
-    });
+    console.log('hi from views/index.jade')
 
 block content
   h1 Docker viz

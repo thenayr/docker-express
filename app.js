@@ -11,6 +11,14 @@ var users = require('./routes/users');
 //oldway
 var app = express();
 var server = require('http').Server(app);
+var server = app.listen(8080, function () {
+
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
+
+});
 
 
 // view engine setup

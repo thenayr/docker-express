@@ -6,5 +6,5 @@ RUN cp -a /tmp/node_modules /code
 RUN npm install express
 RUN npm install deepstream.io-client-js
 WORKDIR /code
-#ADD . /code
+ADD . /code
 CMD ["npm","start"]
